@@ -36,9 +36,13 @@ export default function MenuItems() {
   const [menuRow, setMenuRow] = useState(null)
 
   const loadItems = async () => {
+  try {
     const data = await getAllMenuItems()
     setItems(data)
+  } catch (err) {
+    setItems([])
   }
+}
 
   const loadRestaurants = async () => {
     const data = await getAllRestaurants()

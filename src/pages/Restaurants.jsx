@@ -36,9 +36,13 @@ export default function Restaurants() {
   const [menuRow, setMenuRow] = useState(null)
 
   const loadRestaurants = async () => {
+  try {
     const data = await getAllRestaurants()
     setRestaurants(data)
+  } catch (err) {
+    setRestaurants([])
   }
+}
 
   useEffect(() => {
     loadRestaurants()

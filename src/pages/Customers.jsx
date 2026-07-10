@@ -33,9 +33,13 @@ export default function Customers() {
   const [menuRow, setMenuRow] = useState(null)
 
   const loadCustomers = async () => {
+  try {
     const data = await getAllCustomers()
     setCustomers(data)
+  } catch (err) {
+    setCustomers([])
   }
+}
 
   useEffect(() => {
     loadCustomers()
